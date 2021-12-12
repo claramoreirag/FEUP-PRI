@@ -1,0 +1,19 @@
+#make querie to get all news related to "Hillary Clinton" - title, text, threadtitle or just *
+"Hillary" 
+"hillary" 
+"hillry" 
+
+#querie to get all news with russia from conspiracy label - type, title, text, threadtitle
+"russia AND conspiracy"
+"conspiracy russia"
+
+#querie to get all news having trump or hillary and alqaeda - text, title, threadtitle
+"(trump OR hillary) AND alqaeda"
+"(hiLLary OR TRUMP) AND alQaeDa"
+
+
+#querie to get news from september containing elections - date, title, threadtitle, text
+"09 and elections"
+
+#querie to get junksci news from anonymous authors - type and author
+"junksci AND anonymous"
