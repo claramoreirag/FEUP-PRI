@@ -1,0 +1,281 @@
+{
+	"add-field-type": [
+        {
+            "name":"int",
+            "class":"solr.IntPointField"
+        },
+        {
+            "name":"float",
+            "class":"solr.FloatPointField"
+        },
+        {
+            "name":"date",
+            "class":"solr.DatePointField"
+        },
+	{
+            "name":"articleAuthor",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"}
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"}
+                ]
+            }
+        },
+	{
+            "name":"title",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"},
+                    {"class":"solr.HyphenatedWordsFilterFactory"},
+                    {"class":"solr.KStemFilterFactory"},
+                    {"class":"solr.EnglishPossessiveFilterFactory"}
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"},
+                    {"class":"solr.HyphenatedWordsFilterFactory"},
+                    {"class":"solr.KStemFilterFactory"},
+                    {"class":"solr.EnglishPossessiveFilterFactory"}
+                ]
+            }
+        },
+        {
+            "name":"url",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"}
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"}
+                ]
+            }
+        },
+        {
+            "name":"articleText",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"},
+                    {"class":"solr.HyphenatedWordsFilterFactory"},
+                    {"class":"solr.KStemFilterFactory"},
+                    {"class":"solr.EnglishPossessiveFilterFactory"}
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"},
+                    {"class":"solr.HyphenatedWordsFilterFactory"},
+                    {"class":"solr.KStemFilterFactory"},
+                    {"class":"solr.EnglishPossessiveFilterFactory"}
+                ]
+            }
+        },
+        {
+            "name":"country",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"}
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {
+                        "class": "solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal": true
+                    },
+                    {
+                        "class": "solr.LowerCaseFilterFactory"
+                    }
+                ]
+            }
+        },
+        {
+            "name":"articleType",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"}
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"}
+                ]
+            }
+        },
+        {
+            "name": "language",
+            "class": "solr.TextField",
+            "indexAnalyzer": {
+                "tokenizer": {
+                    "class": "solr.StandardTokenizerFactory"
+                },
+                "filters": [
+                    {
+                        "class": "solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal": true
+                    },
+                    {
+                        "class": "solr.LowerCaseFilterFactory"
+                    }
+                ]
+            },
+            "queryAnalyzer": {
+                "tokenizer": {
+                    "class": "solr.StandardTokenizerFactory"
+                },
+                "filters": [
+                    {
+                        "class": "solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal": true
+                    },
+                    {
+                        "class": "solr.LowerCaseFilterFactory"
+                    }
+                ]
+            }
+        }
+    ],
+    "add-field": [
+        {
+            "name": "type",
+            "type": "articleType",
+            "indexed": true
+        },
+        {
+            "name": "author",
+            "type": "articleAuthor",
+            "indexed": true
+        },
+        {
+            "name": "title",
+            "type": "title",
+            "indexed": true
+        },
+        {
+            "name": "thread_title",
+            "type": "title",
+            "indexed": true
+        },
+        {
+            "name": "text",
+            "type": "articleText",
+            "indexed": true
+        },
+        {
+            "name": "likes",
+            "type": "int",
+            "indexed": false
+        },
+        {
+            "name": "shares",
+            "type": "int",
+            "indexed": false
+        },
+        {
+            "name": "comments",
+            "type": "int",
+            "indexed": false
+        },
+        {
+            "name": "participants_count",
+            "type": "int",
+            "indexed": false
+        },
+        {
+            "name": "replies_count",
+            "type": "int",
+            "indexed": false
+        },
+        {
+            "name": "spam_score",
+            "type": "float",
+            "indexed": false
+        },
+        {
+            "name": "domain_rank",
+            "type": "int",
+            "indexed": false
+        },
+        {
+            "name": "site_url",
+            "type": "url",
+            "indexed": true
+        },
+        {
+            "name": "language",
+            "type": "language",
+            "indexed": true
+        },
+        {
+            "name": "country",
+            "type": "country",
+            "indexed": true
+        }
+
+
+
+
+
+        
+       
+    ]
+}
