@@ -14,10 +14,10 @@
         <p>Fake News Search Engine</p>
       </header>
       <div class="container">
+        <form>
         <div class="row mx-0 search-box">
           <div class="col">
             <!-- {/* search box */} -->
-            <form>
               <div class="form-group mb-3" id="searchWords">
                 <label>What do you want to search for?</label>
                 <input type="text" placeholder="Enter search words" />
@@ -26,20 +26,17 @@
               <button class="btn btn-primary" type="submit">
                 Search
               </button>
-            </form>
           </div>
         </div>
         <div class="row mx-0">
           <div class="col-3 search-filters">
             <!-- {/* search filters */} -->
             <h2>Search Filters</h2>
-
-            <form>
               <label class="switch">
                 <input type="checkbox">
                 <span class="slider round"></span>
-                Article Text
               </label>
+              <label>Article Text</label>
               <label class="weight-range-label">
                 Field Weight
               </label>
@@ -114,17 +111,17 @@
                 Field Weight
               </label>
               <input type="range" disabled>     
-            </form>
-          </div>
-          <div class="col-9">
-            <div class="row">
-              <h2>
-                <b>Search Results</b>
-              </h2>
-              <!-- {/* Search results */} -->
+            </div>
+            <div class="col-9">
+              <div class="row">
+                <h2>
+                  <b>Search Results</b>
+                </h2>
+                <!-- {/* Search results */} -->
+              </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
 </body>

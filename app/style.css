@@ -66,7 +66,7 @@ h2{
 /* The switch - the box around the slider */
 .switch {
   position: relative;
-  display: inline-block;
+  display: content;
   width: 60px;
   height: 34px;
 }
