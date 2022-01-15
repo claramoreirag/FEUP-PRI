@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Fake News Search Engine</title>
+</head>
+<body>
+    <div class="App">
+      <header class="App-header">
+        <p>Fake News Search Engine</p>
+      </header>
+      <div class="container">
+        <div class="row mx-0 search-box">
+          <div class="col">
+            <!-- {/* search box */} -->
+            <form>
+              <div class="form-group mb-3" id="searchWords">
+                <label>What do you want to search for?</label>
+                <input type="text" placeholder="Enter search words" />
+              </div>
+
+              <button class="btn btn-primary" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="row mx-0">
+          <div class="col-3 search-filters">
+            <!-- {/* search filters */} -->
+            <h2>Search Filters</h2>
+
+            <form>
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+                Article Text
+              </label>
+              <label class="weight-range-label">
+                Field Weight
+              </label>
+              <input type="range" disabled>              
+
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+                Article Title
+              </label>
+              <label class="weight-range-label">
+                Field Weight
+              </label>
+              <input type="range" disabled>     
+
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+                Article Thread Title
+              </label>
+              <label class="weight-range-label">
+                Field Weight
+              </label>
+              <input type="range" disabled>     
+
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+                Author
+              </label>
+              <label class="weight-range-label">
+                Field Weight
+              </label>
+              <input type="range" disabled>     
+
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+                Website URL
+              </label>
+              <label class="weight-range-label">
+                Field Weight
+              </label>
+              <input type="range" disabled>     
+
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+                Country
+              </label>
+              <label class="weight-range-label">
+                Field Weight
+              </label>
+              <input type="range" disabled>     
+
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+                Article Language
+              </label>
+              <label class="weight-range-label">
+                Field Weight
+              </label>
+              <input type="range" disabled>     
+
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+                Article Type
+              </label>
+              <label class="weight-range-label">
+                Field Weight
+              </label>
+              <input type="range" disabled>     
+            </form>
+          </div>
+          <div class="col-9">
+            <div class="row">
+              <h2>
+                <b>Search Results</b>
+              </h2>
+              <!-- {/* Search results */} -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
