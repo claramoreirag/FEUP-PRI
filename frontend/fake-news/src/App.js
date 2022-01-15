@@ -3,6 +3,10 @@ import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Col, Row, Form, Button } from "react-bootstrap";
 
+// function FilterSelection(){
+
+// }
+
 function App() {
   return (
     <div className="App">
@@ -39,34 +43,105 @@ function App() {
                 type="switch"
                 id="custom-switch"
                 label="Article Text"
+                // onChange={this.FilterSelection(1)}
               />
+              <>
+                <Form.Label className="weight-range-label">
+                  Field Weight
+                </Form.Label>
+                <Form.Range disabled />
+              </>
+
               <Form.Check
                 type="switch"
                 id="custom-switch"
                 label="Article Title"
+                // onChange={this.FilterSelection(2)}
               />
+              <>
+                <Form.Label className="weight-range-label">
+                  Field Weight
+                </Form.Label>
+                <Form.Range disabled />
+              </>
+
               <Form.Check
                 type="switch"
                 id="custom-switch"
                 label="Article Thread Title"
+                // onChange={this.FilterSelection(3)}
               />
-              <Form.Check type="switch" id="custom-switch" label="Author" />
+              <>
+                <Form.Label className="weight-range-label">
+                  Field Weight
+                </Form.Label>
+                <Form.Range disabled />
+              </>
+
+              <Form.Check
+                type="switch"
+                id="custom-switch"
+                label="Author"
+                // onChange={this.FilterSelection(4)}
+              />
+              <>
+                <Form.Label className="weight-range-label">
+                  Field Weight
+                </Form.Label>
+                <Form.Range disabled />
+              </>
+
               <Form.Check
                 type="switch"
                 id="custom-switch"
                 label="Website URL"
+                // onChange={this.FilterSelection(5)}
               />
-              <Form.Check type="switch" id="custom-switch" label="Country" />
+              <>
+                <Form.Label className="weight-range-label">
+                  Field Weight
+                </Form.Label>
+                <Form.Range disabled />
+              </>
+
+              <Form.Check
+                type="switch"
+                id="custom-switch"
+                label="Country"
+                // onChange={this.FilterSelection(6)}
+              />
+              <>
+                <Form.Label className="weight-range-label">
+                  Field Weight
+                </Form.Label>
+                <Form.Range disabled />
+              </>
+
               <Form.Check
                 type="switch"
                 id="custom-switch"
                 label="Article Language"
+                // onChange={this.FilterSelection(7)}
               />
+              <>
+                <Form.Label className="weight-range-label">
+                  Field Weight
+                </Form.Label>
+                <Form.Range disabled />
+              </>
+
               <Form.Check
                 type="switch"
                 id="custom-switch"
                 label="Article Type"
+                // onChange={this.FilterSelection(8)}
               />
+              <>
+                <Form.Label className="weight-range-label">
+                  Field Weight
+                </Form.Label>
+                <Form.Range disabled />
+              </>
             </Form>
           </Col>
           <Col xs={9}>
