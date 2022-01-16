@@ -1,128 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Fake News Search Engine</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.6.1/journal/bootstrap.min.css"
+    integrity="sha512-uxeJKeur4Xsr2G34/0G7zjr2jNkx9ICMzn2eueNYgrofsWiWAC4Tqdq3pHbn1lfaWYQafovMfLTfZAsZq3i/WQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Fake News Search Engine</title>
 </head>
+
 <body>
-    <div class="App">
-      <header class="App-header">
-        <p>Fake News Search Engine</p>
-      </header>
-      <div class="container">
-        <form>
+  <div class="App">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Fake News Search System</a>
+        
+        </div>
+      </nav>
+    </header>
+
+    <div class="container pt-4">
+      <form>
         <div class="row mx-0 search-box">
           <div class="col">
             <!-- {/* search box */} -->
-              <div class="form-group mb-3" id="searchWords">
-                <label>What do you want to search for?</label>
-                <input type="text" placeholder="Enter search words" />
+            <div class="form-group mb-3 " id="searchWords">
+              <label>
+                <h3>What do you want to search for?</h3>
+              </label>
+              <div class="d-flex">
+                <input class="form-control me-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
               </div>
+            </div>
 
-              <button class="btn btn-primary" type="submit">
-                Search
-              </button>
           </div>
         </div>
         <div class="row mx-0">
           <div class="col-3 search-filters">
             <!-- {/* search filters */} -->
             <h2>Search Filters</h2>
-              <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-              </label>
-              <label>Article Text</label>
-              <label class="weight-range-label">
-                Field Weight
-              </label>
-              <input type="range" disabled>              
-
-              <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-                Article Title
-              </label>
-              <label class="weight-range-label">
-                Field Weight
-              </label>
-              <input type="range" disabled>     
-
-              <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-                Article Thread Title
-              </label>
-              <label class="weight-range-label">
-                Field Weight
-              </label>
-              <input type="range" disabled>     
-
-              <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-                Author
-              </label>
-              <label class="weight-range-label">
-                Field Weight
-              </label>
-              <input type="range" disabled>     
-
-              <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-                Website URL
-              </label>
-              <label class="weight-range-label">
-                Field Weight
-              </label>
-              <input type="range" disabled>     
-
-              <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-                Country
-              </label>
-              <label class="weight-range-label">
-                Field Weight
-              </label>
-              <input type="range" disabled>     
-
-              <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-                Article Language
-              </label>
-              <label class="weight-range-label">
-                Field Weight
-              </label>
-              <input type="range" disabled>     
-
-              <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-                Article Type
-              </label>
-              <label class="weight-range-label">
-                Field Weight
-              </label>
-              <input type="range" disabled>     
-            </div>
-            <div class="col-9">
-              <div class="row">
-                <h2>
-                  <b>Search Results</b>
-                </h2>
-                <!-- {/* Search results */} -->
+            
+            
+              
+                  <fieldset class="form-group" id="searchFields">
+                  
+                    <legend class="mt-5">Fields</legend>
+                   
+                    <div class="form-check">
+                      <input class="form-check-input" value="text" type="checkbox" name="text" id="text">
+                      <label class="form-check-label" for="text">Article text</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" value="title" type="checkbox" name="title" id="title">
+                      <label class="form-check-label" for="text">Article title</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" value="thread_title" type="checkbox" name="thread_title" id="thread_title">
+                      <label class="form-check-label" for="text">Thread title</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" value="author" type="checkbox" name="author" id="author">
+                      <label class="form-check-label" for="author">Author</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" value="country" type="checkbox" name="country" id="country">
+                      <label  class="form-check-label" for="country">Country</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" value="site_url" type="checkbox" name="site_url" id="site_url">
+                      <label  class="form-check-label"  for="site_url">Website</label>
+                    </div>
+                   
+                      
+                  
+                 
               </div>
+              
+         
+
+
+          <div class="col-9">
+            <div class="row ml-3">
+              <h2>
+                <b>Search Results</b>
+              </h2>
+              <!-- {/* Search results */} -->
             </div>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
+  </div>
 </body>
+
 </html>
