@@ -34,58 +34,10 @@ def build_url(search_str, fields, sort_params):
 def home():
     return render_template('index.html')
 
-# @app.route("/results")
-# def results():
-
-#     page = request.args.get('page')
-#     print("Page:", page)
-
-#     query_url = session['query_url']
-#     query_url = query_url +  f"&start={(int(page) - 1) * 10}"
-#     print(query_url)
-#     response = requests.get(query_url).json()['response']
-#     results = response['docs']
-#     num_docs = response['numFound']
-
-#     num_pages = math.ceil(num_docs / 10.0)
-
-#     return render_template('results.html', results=results, page=page, num_pages=num_pages)
-
-# @app.route("/search", methods=['POST'])
-# def search():
-#     search_str = request.form['search_str']
-#     search_fields = ""
-#     fields = ['title', 'desc', 'author', 'genre', 'bookformat']
-#     weights = ['^0.5', '^0.2', '^1.2', '^1.3', '^1.3']
-#     for i, field in enumerate(fields):
-#         if field + 'Field' in request.form:
-#             search_fields += field + weights[i] + ' '
-#     reviews = False
-#     if 'reviewsField' in request.form:
-#         reviews = True
-#     page = request.form['page']
-#     ratingStart = request.form['ratingStart']
-#     ratingEnd = request.form['ratingEnd']
-
-#     pagesStart = request.form['pagesStart']
-#     pagesEnd = request.form['pagesEnd']
-
-#     reviewsStart = request.form['reviewsStart']
-#     reviewsEnd = request.form['reviewsEnd']
-
-#     totalratingsStart = request.form['totalratingsStart']
-#     totalratingsEnd = request.form['totalratingsEnd']
-
-#     sort_field = request.form['sortField']
-#     sort_order = request.form['sortOrder']
-
-#     print(search_fields)
-
-#     query_url = build_url(search_str, search_fields, reviews, (float(ratingStart), float(ratingEnd)), (int(pagesStart), int(pagesEnd)), (int(reviewsStart), int(reviewsEnd)), (int(totalratingsStart), int(totalratingsEnd)), (sort_field, sort_order))
-
-#     print(query_url)
-#     session['query_url'] = query_url
-#     return redirect(url_for('results', page=page))
+@app.route("/search", methods=['POST'])
+def search():
+    print( request.form)
+    return render_template('index.html')
 
 app.secret_key = os.urandom(24)
 app.run(debug = True)

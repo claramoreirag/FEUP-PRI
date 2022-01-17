@@ -26,7 +26,7 @@
     </header>
 
     <div class="container pt-4">
-      <form>
+      <form  method="post" action="{{ url_for('search') }}">
         <div class="row mx-0 search-box">
           <div class="col">
             <!-- {/* search box */} -->
@@ -35,7 +35,7 @@
                 <h3>What do you want to search for?</h3>
               </label>
               <div class="d-flex">
-                <input class="form-control me-sm-2" type="text" placeholder="Search">
+                <input class="form-control me-sm-2" name="search_str" type="text" placeholder="Search">
                 <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
               </div>
             </div>
