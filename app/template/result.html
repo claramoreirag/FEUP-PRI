@@ -1,0 +1,15 @@
+{% for result in results %}
+<div class="row result">
+    <div class="col-10 article-info">
+    <h3 class="article-title">{{result['title']}}</h3>
+    <h5 class="article-author-country">by {{result['author']}}, {{result['country']}}</h5>
+    <p class="date">Posted in {{result['published'][0][9:]}}</p>
+    <br>
+    <p class="article-text">{{result['text'][500]}}...</p>
+    </div>
+    <div class="col-2 article-class">
+    <p class="site"><em>{{result['site_url']}}</em></p>
+    <p class="thread-name">/thread: {{result['thread_title']}}</p>
+    <p class="article-type">#{{result['type']}}</p>
+    </div>
+</div>
