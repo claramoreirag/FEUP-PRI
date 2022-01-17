@@ -50,7 +50,7 @@ def results():
 
     num_pages = math.ceil(num_docs / 10.0)
 
-    return render_template('results.html', results=results, page=page, num_pages=num_pages)
+    return render_template('result.html', results=results, page=page, num_pages=num_pages)
 
 
 
