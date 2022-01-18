@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.6.1/journal/bootstrap.min.css"
+        integrity="sha512-uxeJKeur4Xsr2G34/0G7zjr2jNkx9ICMzn2eueNYgrofsWiWAC4Tqdq3pHbn1lfaWYQafovMfLTfZAsZq3i/WQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Fake News Search Engine</title>
+</head>
+
+<body>
+    <div class="App">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid d-flex justify-content-between">
+                    <a class="navbar-brand" href="#">Fake News Search System</a>
+
+                    <ul class="navbar-nav me-auto ">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ url_for('.home') }}">Back
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </nav>
+        </header>
+       
+     
+        <div class="mx-4 d-flex flex-column">
+            <div class="row result">
+                <div class="col-12 article-info">
+                    <h3 class="article-title">{{result['title']}}</h3>
+                    <h5 class="article-author-country">by {{result['author']}}, {{result['country']}}</h5>
+                    <p class="date">Posted in {{result['published'][0][9:]}}</p>
+                    <div class=" article-class">
+                        <p class="site"><em>{{result['site_url']}}</em></p>
+                        
+                        <p class="thread-name">/thread: {{result['thread_title']}}</p>
+                    
+                        <p class="article-type">#{{result['type']}}</p>
+                    </div>
+                    <p class="article-text" align="justify">{{result['text']}}</p>
+                </div>
+               
+            </div>
+            
+        </div>
+
+    </div>
+
+      
+    
+</body>
