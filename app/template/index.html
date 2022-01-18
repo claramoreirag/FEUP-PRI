@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+  <script src="{{ url_for('static', filename='action.js') }}" defer></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.6.1/journal/bootstrap.min.css"
@@ -43,7 +44,7 @@
           </div>
         </div>
         <div class="row mx-0">
-          <div class="col-3 search-filters">
+          <div class="col-7 search-filters">
             <!-- {/* search filters */} -->
             <h2>Search Filters</h2>
             
@@ -51,7 +52,7 @@
               
                   <fieldset class="form-group" id="searchFields">
                   
-                    <legend class="mt-5">Fields</legend>
+                    <legend class="mt-5 text-primary">Fields</legend>
                    
                     <div class="form-check">
                       <input class="form-check-input" value="text" type="checkbox" name="text" id="text">
@@ -90,14 +91,7 @@
          
 
 
-          <div class="col-9">
-            
-            <h2>
-              <b>Search Results</b>
-            </h2>
-            <!-- {/* Search results */} -->
-
-          </div>
+          
         </div>
       </form>
     </div>

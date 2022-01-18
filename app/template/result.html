@@ -1,70 +1,83 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.6.1/journal/bootstrap.min.css"
-          integrity="sha512-uxeJKeur4Xsr2G34/0G7zjr2jNkx9ICMzn2eueNYgrofsWiWAC4Tqdq3pHbn1lfaWYQafovMfLTfZAsZq3i/WQ=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <title>Fake News Search Engine</title>
-      </head>
-      
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.6.1/journal/bootstrap.min.css"
+        integrity="sha512-uxeJKeur4Xsr2G34/0G7zjr2jNkx9ICMzn2eueNYgrofsWiWAC4Tqdq3pHbn1lfaWYQafovMfLTfZAsZq3i/WQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Fake News Search Engine</title>
+</head>
+
 <body>
     <div class="App">
         <header>
-          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid d-flex justify-content-between">
-              <a class="navbar-brand" href="#">Fake News Search System</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-          
-              <div class="collapse navbar-collapse" id="navbarColor02">
-                <ul class="navbar-nav me-auto ">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="{{ url_for('.home') }}">Back
-                    </a>
-                  </li>
-                 
-                </ul>
-              </div>
-            </div>
-          </nav>
-    </header>
-    <h2 class="pt-5 pl-5">Search Results</h2>
-    
-    <div class="d-flex flex-column">
-        {% for result in results %}
-        <div class="row result">
-            <div class="col-10 article-info">
-            <h3 class="article-title">{{result['title']}}</h3>
-            <h5 class="article-author-country">by {{result['author']}}, {{result['country']}}</h5>
-            <p class="date">Posted in {{result['published'][0][9:]}}</p>
-            <br>
-            <p class="article-text">{{result['text'][500]}}...</p>
-            </div>
-            <div class="col-2 article-class">
-            <p class="site"><em>{{result['site_url']}}</em></p>
-            <p class="thread-name">/thread: {{result['thread_title']}}</p>
-            <p class="article-type">#{{result['type']}}</p>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-    {% if page|int() == 1 %}
-    <button disabled><a href="{{url_for('results', page=page|int()-1)}}">Previous Page</a></button>
-{% else %}
-    <button><a href="{{url_for('results', page=page|int()-1)}}">Previous Page</a></button>
-{% endif %}
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid d-flex justify-content-between">
+                    <a class="navbar-brand" href="#">Fake News Search System</a>
 
-{% if page|int() == num_pages|int() %}
-    <button disabled><a href="{{url_for('results', page=page|int()+1)}}">Next Page</a></button>
-{% else %}
-    <button><a href="{{url_for('results', page=page|int()+1)}}">Next Page</a></button>
-{% endif %}
+                    <ul class="navbar-nav me-auto ">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ url_for('.home') }}">Back
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </nav>
+        </header>
+        <h2 class="pt-5 pl-5">Search Results</h2>
+        {% if results %}
+        <div class="mx-4 d-flex flex-column">
+            {% for result in results %}
+            <div class="row result">
+                <div class="col-9 article-info">
+                    <h3 class="article-title">{{result['title']}}</h3>
+                    <h5 class="article-author-country">by {{result['author']}}, {{result['country']}}</h5>
+                    <p class="date">Posted in {{result['published'][0][9:]}}</p>
+                    <p class="article-text">{{result['text'][0:500]}}...</p>
+                </div>
+                <div class="col-3 article-class">
+                    <p class="site"><em>{{result['site_url']}}</em></p>
+                    {% if result['thread_title'][200] %}
+                    <p class="thread-name">/thread: {{result['thread_title'][0:200]}}...</p>
+                    {% else %}
+                    <p class="thread-name">/thread: {{result['thread_title']}}</p>
+                    {% endif %}
+                    <p class="article-type">#{{result['type']}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="row ml-5 mb-2 pb-1">
+            {% if page|int() == 1 %}
+            <button type="button" class="btn btn-outline-secondary" disabled>Previous Page</button>
+            {% else %}
+            <button type="button" class="btn btn-outline-primary"><a
+                    href="{{url_for('results', page=page|int()-1,query=query)}}">Previous Page</a></button>
+            {% endif %}
+
+            {% if page|int() == num_pages|int()-1 %}
+            <button type="button" class="btn btn-outline-secondary" disabled>Next Page</button>
+            {% else %}
+            <button type="button" class="btn btn-outline-primary"><a
+                    href="{{url_for('results', page=page|int()+1, query=query)}}">Next Page</a></button>
+            {% endif %}
+        </div>
+        <div>
+            <h5 class="ml-5 pb-4">Page {{page}} of {{num_pages}}</h5>
+        </div>
+    
+
+        {% else %}
+        
+        {% endif %}
+    </div>
+</body>

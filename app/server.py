@@ -8,26 +8,11 @@ app = Flask(__name__,template_folder='template')
 
 def build_url(search_str, fields):
     
-    search_str = ""
-   
-    if len(fields) != 0:
-        search_str = f'{{!edismax qf="{fields}" v="{search_str}"}}'
-
+    
     q = "*:*"
+  
+    url = f"http://localhost:8983/solr/system3/select?defType=edismax&q.op=OR&q={search_str}&qf={fields}&indent=true&rows=10&start=00"
     
-    if search_str != "":
-        q = " " + search_str
-
-    # fq_rating = f"rating:[{rating_range[0]} TO {rating_range[1]}]"
-    # fq_pages = f"pages:[{pages_range[0]} TO {pages_range[1]}]"
-    # fq_reviews = f"num_reviews:[{reviews_range[0]} TO {reviews_range[1]}]"
-    # fq_totalratings = f"totalratings:[{totalratings_range[0]} TO {totalratings_range[1]}]"
-    #TODO add sorts
-    #TODO add ranges
-    
-
-    url = f"http://localhost:8983/solr/system3/select?q={q}&fl=*,[child]&q.op=OR&defType=lucene&indent=true&rows=10"
-
     return url
 
 @app.route("/")
@@ -39,18 +24,21 @@ def results():
 
     page = request.args.get('page')
     print("Page:", page)
-
-    #query_url = session['query_url']
     query_url = request.args.get('query')
-    query_url = query_url +  f"&start={(int(page) - 1) * 10}"
-    print(query_url)
+    if(page=='1'):
+        query_url = query_url
+    else:
+        nextp=str(int(query_url[-2:])+10)
+        print(nextp)
+        query_url = query_url[0:-2]+nextp
     response = requests.get(query_url).json()['response']
     results = response['docs']
     num_docs = response['numFound']
-
+    print("Start:", response['start'])
+    print("Query:", request.args.get('query'))
     num_pages = math.ceil(num_docs / 10.0)
-
-    return render_template('result.html', results=results, page=page, num_pages=num_pages)
+    
+    return render_template('result.html',query=query_url, results=results, page=page, num_pages=num_pages)
 
 
 
@@ -59,18 +47,22 @@ def results():
 
 @app.route("/search", methods=['POST'])
 def search():
+    no_fields=True
     search_str = request.form['search_str']
     search_fields = ""
     fields = ['text', 'title', 'thread_title','author', 'country', 'site_url','type']
-    #weights = ['^0.5', '^0.2', '^1.2', '^1.3', '^1.3'] #TODO add weigths
+    weights = ['^1 ', '^2 ', '^2 ', '^3 ','^1 ', '^1.3 ','^1 '] #TODO add weigths
     for i, field in enumerate(fields):
         if field in request.form:
-            search_fields += field + '^1' + ' '
+            search_fields += field + weights[i]
+            no_fields=False
+    if(no_fields):
+        for i, field in enumerate(fields):
+            search_fields += field + '^1 '
+           
     query_url = build_url(search_str, search_fields)
-
-    print(query_url)
-    #session['query_url'] = query_url
-    return redirect(url_for('results', query=query_url, page=1)) #TODO add pages
+    
+    return redirect(url_for('results', query=query_url, page="1")) #TODO add pages
 
 app.secret_key = os.urandom(24)
 app.run(debug = True)
