@@ -38,10 +38,12 @@
             {% for result in results %}
             <div class="row result">
                 <div class="col-9 article-info">
-                    <h3 class="article-title">{{result['title']}}</h3>
+                   
+                    <a  href="{{ url_for('article', article_id=result['id']) }}"><h3 class="article-title">{{result['title']}}</h3></a>
                     <h5 class="article-author-country">by {{result['author']}}, {{result['country']}}</h5>
                     <p class="date">Posted in {{result['published'][0][9:]}}</p>
                     <p class="article-text">{{result['text'][0:500]}}...</p>
+                    <p class="article-text">{{result['domain_rank']}}...</p>
                 </div>
                 <div class="col-3 article-class">
                     <p class="site"><em>{{result['site_url']}}</em></p>
@@ -71,13 +73,12 @@
                     href="{{url_for('results', page=page|int()+1, query=query)}}">Next Page</a></button>
             {% endif %}
         </div>
-        <div>
-            <h5 class="ml-5 pb-4">Page {{page}} of {{num_pages}}</h5>
-        </div>
-    
+       
+        <h5 class="ml-5">Page {{page}} of {{num_pages}}</h5>
+    </div>
 
         {% else %}
-        
+        <h5 class="pt-3 pl-5">No results found :(</h5>
         {% endif %}
     </div>
 </body>

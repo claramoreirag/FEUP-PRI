@@ -257,12 +257,14 @@
         {
             "name": "spam_score",
             "type": "float",
-            "indexed": false
+            "indexed": false,
+            "docValues":true
         },
         {
             "name": "domain_rank",
             "type": "int",
-            "indexed": false
+            "indexed": false,
+            "docValues":true
         },
         {
             "name": "site_url",

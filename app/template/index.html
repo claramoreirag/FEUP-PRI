@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="{{ url_for('static', filename='action.js') }}" defer></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -44,12 +45,13 @@
           </div>
         </div>
         <div class="row mx-0">
-          <div class="col-7 search-filters">
+          <div class="col-8 search-filters">
             <!-- {/* search filters */} -->
             <h2>Search Filters</h2>
             
             
-              
+              <div class="row">
+                <div class="col-10 col-md-4">
                   <fieldset class="form-group" id="searchFields">
                   
                     <legend class="mt-5 text-primary">Fields</legend>
@@ -58,6 +60,7 @@
                       <input class="form-check-input" value="text" type="checkbox" name="text" id="text">
                       <label class="form-check-label" for="text">Article text</label>
                     </div>
+                    
                     <div class="form-check">
                       <input class="form-check-input" value="title" type="checkbox" name="title" id="title">
                       <label class="form-check-label" for="text">Article title</label>
@@ -83,15 +86,53 @@
                       <label  class="form-check-label"  for="type">Type</label>
                     </div>
                    
-                      
-                  
-                 
               </div>
-              
-         
+              <div class="col-10 col-md-4">
+                <fieldset class="form-group" id="systemFields">
+                  
+                  <legend class="mt-5 text-primary">Search System</legend>
+        
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input type="radio" class="form-check-input" name="system" id="system1" value="system1" >
+                     Simple search
+                    </label>
+                  </div>
 
-
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input type="radio" class="form-check-input" name="system" id="system2" value="system3" checked>
+                      Enhanced search
+                    </label>
+                  </div>
+                 
+                </fieldset>
+              </div>
+                <div class="col-10 col-md-4">
+                  <fieldset class="form-group" id="sortFields">
+                    
+                    <legend class="mt-5 text-primary">Order by</legend>
           
+                
+                    <select class="form-select"  name="sortField" aria-label="Default select example">
+                      <option selected="selected" value="score">Search Score</option>
+                      <option value="title">Title</option>
+                      <option value="thread_title">Thread Title</option>
+                      <option value="domain_rank">Domain Rank</option>
+                      <option value="spam_score">Spam_score</option>
+                  </select>
+                  <select class="form-select" name="sortOrder">
+                      <option selected="selected" value="DESC">Descending</option>
+                      <option value="ASC">Ascending</option>
+                  </select>
+                 
+                  </fieldset>
+  
+              </div>
+                </div>
+              </div>
+          </div>
+              
         </div>
       </form>
     </div>
